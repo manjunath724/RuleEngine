@@ -1,0 +1,85 @@
+<%= form_for(@rule) do |f| %>
+  <% if @rule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rule.errors.count, "error") %> prohibited this rule from being saved:</h2>
+
+      <ul>
+      <% @rule.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :signal %><br>
+    <%= f.text_field :signal %>
+  </div>
+  <div class="field">
+    <%= f.label :value_type %><br>
+    <%= f.select :value_type, Rule::TYPES.values %>
+  </div>
+  <div class="field">
+    <%= f.label :comparison_operator %><br>
+    <%= f.select :comparison_operator, Rule::OPERATORS %>
+  </div>
+  <div class="field val1">
+    <%= f.label :value %><br>
+    <input type="text" name="signal_value" value="<%= @rule.value unless @rule.value_type == Rule::TYPES[:dt] %>" />
+  </div>
+  <div class="field reltv">
+    <%= f.label 'Relative DateTime' %><br>
+    <%= f.check_box :relative %>
+  </div>
+  <div class="field val2">
+    <%= f.label :value %><br>
+    <%= select_datetime(datetime = (@rule.value.to_datetime rescue DateTime.current)) %>
+  </div>
+  <div class="field val3">
+    <%= f.label :value %><br>
+    <input type="number" name="val" required="true" value="<%= @rule.value.split('.').first rescue 1 %>" />
+    <%= f.select :value, Rule::COMPONENTS, selected: (@rule.value.split('.').second rescue '') %> <b>From Now</b>.
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  var dt = '<%= Rule::TYPES[:dt] %>';
+  disable_value_field();
+
+  $('#rule_value_type').change(function() {
+    $('#rule_relative').attr('checked', false);
+    disable_value_field();
+  });
+
+  $('#rule_relative').change(function() {
+    disable_relative_fields();
+  });
+
+  function disable_value_field() {
+    var value_type = $('#rule_value_type').val();
+    if(value_type == dt) {
+      $('.val1').attr('disabled', true).hide();
+      $('.reltv').attr('disabled', false).show();
+    } else {
+      $('.val1').attr('disabled', false).show();
+      $('.reltv').attr('disabled', true).hide();
+    }
+    disable_relative_fields();
+  }
+
+  function disable_relative_fields() {
+    if($('#rule_relative').is(":checked")) {
+      $('.val2').attr('disabled', true).hide();
+      $('.val3').attr('disabled', false).show();
+    } else {
+      if($('#rule_value_type').val() == dt)
+        $('.val2').attr('disabled', false).show();
+      else
+        $('.val2').attr('disabled', true).hide();
+      $('.val3').attr('disabled', true).hide();
+    }
+  }
+</script>

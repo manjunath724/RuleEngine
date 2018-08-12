@@ -1,0 +1,25 @@
+<%= link_to 'Back', root_path %>
+<center>
+  Please place the raw_data.json file in the /public directory of the rule_engine application.<br><br>
+  <%= button_tag(type: "submit", class: 'data-parser') do %>
+    Run Data Parser
+  <% end %>
+  <p id="notice"><%= notice %></p>
+</center>
+
+<br>
+
+<div id="failure_list"></div>
+
+<script type="text/javascript">
+  setInterval(function() {
+    $('#notice').html('');
+  }, 5000);
+
+  $('.data-parser').click(function(e) {
+    get_data("<%= data_parser_rules_path %>", {}, function(data) {
+      $('#notice').html('Test was run successfully.')
+      $('#failure_list').html(data);
+    }, 'html');
+  });
+</script>

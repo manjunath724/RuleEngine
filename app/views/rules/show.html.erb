@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @rule.user.email %>
+</p>
+
+<p>
+  <strong>Signal:</strong>
+  <%= @rule.signal %>
+</p>
+
+<p>
+  <strong>Value type:</strong>
+  <%= @rule.value_type %>
+</p>
+
+<p>
+  <strong>Comparison operator:</strong>
+  <%= @rule.comparison_operator %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @rule.value %>
+</p>
+
+<%= link_to 'Edit', edit_rule_path(@rule) %> |
+<%= link_to 'Back', rules_path %>

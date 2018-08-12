@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RuleEngine</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= link_to 'Sign out'.html_safe, destroy_user_session_path, method: :delete, style: 'float: right' if signed_in? %>
+    <center><h1>Rule Engine</h1></center>
+  </head>
+  <body>
+    <style>
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+      }
+
+      thead {
+        background-color: #f2f2f2; 
+        border: 1px solid #ddd;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even){ background-color: #f2f2f2 }
+    </style>
+
+    <%= yield %>
+
+  </body>
+</html>

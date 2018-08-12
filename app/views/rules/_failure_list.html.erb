@@ -1,0 +1,32 @@
+<div style="overflow-x:auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>Start Time: <%= start_time %></th>
+        <th>End Time: <%= end_time %></th>
+        <th>Execution Time: <%= execution_time %></th>
+        <th>Total Failure Count: <%= @failure_list.uniq.count %></th>
+      </tr>
+      <tr>
+        <th>Sl. No.</th>
+        <th>Signal</th>
+        <th>Value type</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @failure_list.uniq.each_with_index do |data, i| %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><%= data["signal"] %></td>
+          <td><%= data["value_type"] %></td>
+          <td><%= data["value"] %></td>
+        </tr>
+      <% end %>
+      <% if @failure_list.blank? %>
+        <tr><td colspan="4"><center>There are no Data/Fails/Rules</center></td></tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
