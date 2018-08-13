@@ -1,4 +1,5 @@
-<%= link_to 'Back', root_path %>
+<%= button_to '< Back', root_path, method: :get %>
+
 <center>
   Please place the raw_data.json file in the /public directory of the rule_engine application.<br><br>
   <%= button_tag(type: "submit", class: 'data-parser') do %>

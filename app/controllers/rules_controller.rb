@@ -59,33 +59,10 @@ class RulesController < ApplicationController
   # POST /rules/data_parser.json
   def data_parser
     start_time = Time.now
-    @failure_list = []
-    rules = current_user.rules.group_by(&:signal)
-    rule_keys = rules.keys
-    file = File.read('public/raw_data.json')
-    data_hash = JSON.parse(file).uniq
-    applicable_data = data_hash.select { |a| rule_keys.include? a["signal"] }.uniq
-    applicable_data.each do |data|
-      relevant_rules = rules[data["signal"]].select { |r| r.value_type == data["value_type"] }.uniq
-      relevant_rules.each do |rule|
-        if rule.value_type == data["value_type"]
-          lhs = data["value"]
-          rhs = rule.value
-          if rule.value_type == Rule::TYPES[:dt]
-            rhs = rule.relative ? eval(rhs) : rhs.to_time
-          elsif rule.value_type == Rule::TYPES[:int]
-            lhs = lhs.to_i
-            rhs = rhs.to_i
-          end
-          @failure_list << data unless lhs.method(rule.comparison_operator).(rhs)
-        else
-          @failure_list << data
-        end
-      end
-    end
+    file_path = 'public/uploads/raw_data.json'
+    @failure_list = Rule.parse_incoming_signal_data(current_user.id, file_path)
     end_time = Time.now
     render partial: "rules/failure_list", locals: { start_time: start_time, end_time: end_time, execution_time: (end_time - start_time) }
-    # redirect_to test_rules_url(start_time: start_time, end_time: end_time, execution_time: (end_time - start_time), failure_list: failure_list.uniq.first(16)), notice: "Test was run successfully."
   end
 
   private
