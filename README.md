@@ -130,3 +130,4 @@ Rules can be specified for a signal and in accordance to the value_type. Some ex
 | 0.016190643   | 16.19         |
 | 0.014000516   | 14.00         |
 | 0.011532539   | 11.53         |
+| 0.010087103   | 10.09         |
