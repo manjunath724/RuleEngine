@@ -63,16 +63,16 @@ Rules can be specified for a signal and in accordance to the value_type. Some ex
   - Sign up with your email id and sign in as an user to the Rule Engine.
   - Please note, mailers haven't been setup. Ergo, you wouldn't receive any emails.
 - Upon successful login, you will be redirected to the Rules listing page. With below links:
-  - To Add a Rule
-  - To Edit a Rule
-  - To Remove a Rule
-  - To Test the Data with the Created set of Rules
-  - To Sign out
+  - To **Add** a Rule
+  - To **Edit** a Rule
+  - To **Remove** a Rule
+  - To **Test the Data** with the Created set of Rules
+  - To **Sign out**
 - Adding/Editing a Rule
-  - Enter Signal name
-  - Select Value Type
-  - Select Comparison Operator to define the rule and how the data must be validated Ex: 20 must be < 100
-  - Specify Value
+  - Enter **Signal name**
+  - Select **Value Type**
+  - Select **Comparison Operator** to define the rule and how the data must be validated Ex: 20 must be < 100
+  - Specify **Value**
   - `Datetime` type has options:
     - To Specify an Absolute DateTime Ex: Should be less than `date`
     - To Specify a Relative DateTime Ex: Must not be in future
@@ -82,11 +82,11 @@ Rules can be specified for a signal and in accordance to the value_type. Some ex
   - `raw_data.json` file is placed under `/public/uploads/` directory of the RuleEngine repository.
   - Clicking on `Run Data Parser` button will validate the `raw_data.json` file contents against the `current_user` rules.
   - The Parser returns:
-    - The Start Time of the Algorithm
-    - The End Time of the Algorithm
-    - The Total Execution Time of the Algorithm
+    - The **Start Time** of the Algorithm
+    - The **End Time** of the Algorithm
+    - The **Total Execution Time** of the Algorithm
     - Number of Failed data signals and
-    - The list of Failed data signals in a tabular format.
+    - The list of **Failed data signals** in a tabular format.
 - CSS has been written for table responsiveness, a fixed footer with background and text decorations, etc.
 - Please replace either the file `raw_data.json` with your new test data or the file name/path in the `data_parser` action of the `rules_controller`.
 
@@ -110,6 +110,7 @@ Rules can be specified for a signal and in accordance to the value_type. Some ex
     - A strong model level validation to handle the Rule creation/update from other sources like `rails console`, etc.
     - Datetime with zone comparison
     - Exception handler for wrong data stream/format
+    - Rspec test case scenarios
     - Add file Uploader
     - Datepicker to select Datetime while defining the Rule
     - Integration of Bootstrap with CSS for better UI/UX look and feel
