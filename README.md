@@ -56,7 +56,7 @@ Rules can be specified for a signal and in accordance to the value_type. Some ex
 
 ## Steps to setup and run the project on Ubuntu
 - Clone the repository using [`git clone`](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) command.
-- CD into the repository and run `rake db:create db:migrate` or `rake db:setup`.
+- CD into the repository and run `bundle install` and `rake db:create db:migrate` or `rake db:setup`.
 - Start `rails server`.
 - visit `localhost:3000` in your browser.
 - `devise` authenticator will prompt you to sign_in / sign_up.
@@ -93,7 +93,8 @@ Rules can be specified for a signal and in accordance to the value_type. Some ex
 ## Discussion Questions
 - Briefly describe the conceptual approach you chose! What are the trade-offs?
   - The concept of storing the operational components in the database and executing them while validating the data stream is been used. To parse the data, the grouped hashmap has been filtered to fetch the set of applicable items only and the method to evaluate the function and carryout the operation has been chosen.
-  - There was no trade-offs. I chose the best and suitable approach during the design phase.
+  - There was no trade-offs. I chose the best and suitable approach as far as my knowledge goes, during the design phase.
+  - Willing to learn and switch to optimal solution.
 
 - What's the runtime performance? What is the complexity? Where are the bottlenecks?
   1. Runtime performance for the sample `raw_data.json` is between 
@@ -113,6 +114,7 @@ Rules can be specified for a signal and in accordance to the value_type. Some ex
     - Rspec test case scenarios
     - Add file Uploader
     - Datepicker to select Datetime while defining the Rule
+    - Pagination and Horizontal Form fields
     - Integration of Bootstrap with CSS for better UI/UX look and feel
     - Management of Value_types, Comparison Operators and the Date Components for Users according to their requirement and Input Data Stream.
     - Setup Mailer
