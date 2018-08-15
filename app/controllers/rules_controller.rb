@@ -4,7 +4,7 @@ class RulesController < ApplicationController
   # GET /rules
   # GET /rules.json
   def index
-    @rules = current_user.rules
+    @rules = current_user.rules.page(params[:page]).per(15)
   end
 
   # GET /rules/new
@@ -55,8 +55,8 @@ class RulesController < ApplicationController
     end
   end
 
-  # POST /rules/data_parser
-  # POST /rules/data_parser.json
+  # GET /rules/data_parser
+  # GET /rules/data_parser.json
   def data_parser
     start_time = Time.now
     file_path = 'public/uploads/raw_data.json'

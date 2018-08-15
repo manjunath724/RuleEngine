@@ -14,8 +14,12 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# User management
+# Use devise for user management
 gem 'devise'
+# Use toastr-rails for flash message notification
+gem 'toastr-rails'
+# Use kaminari for pagination
+gem 'kaminari'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

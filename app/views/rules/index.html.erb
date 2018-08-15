@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <%= button_to 'Test with Data', test_rules_path, method: :get, style: 'float: right' %>
 <h1>Listing Rules</h1>
 
@@ -42,5 +40,5 @@
 </div>
 
 <br>
-
+<%= paginate @rules unless @rules.blank? %>
 <%= button_to 'New Rule', new_rule_path, method: :get %>

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require toastr
 
 
 function get_data(url, data, callback, data_type) {

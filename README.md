@@ -41,6 +41,8 @@ Rules can be specified for a signal and in accordance to the value_type. Some ex
 ## Technical Details
 - Using `devise` gem for User Authentication and Management.
 - Using `sqlite3` storage for storing the rules.
+- Using `kaminari` gem for pagination.
+- Using `toastr-rails` gem as a flash message notifier.
 - `rules#index` has been set as a `root_path`.
 - CRUD actions of a Rules controller has been used for rules management.
 - Custom GET actions have been added to Parse and Test the Data Stream.
@@ -114,7 +116,7 @@ Rules can be specified for a signal and in accordance to the value_type. Some ex
     - Rspec test case scenarios
     - Add file Uploader
     - Datepicker to select Datetime while defining the Rule
-    - Pagination and Horizontal Form fields
+    - Horizontal Form fields
     - Integration of Bootstrap with CSS for better UI/UX look and feel
     - Management of Value_types, Comparison Operators and the Date Components for Users according to their requirement and Input Data Stream.
     - Setup Mailer
