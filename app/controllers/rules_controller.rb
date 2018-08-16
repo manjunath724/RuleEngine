@@ -4,7 +4,14 @@ class RulesController < ApplicationController
   # GET /rules
   # GET /rules.json
   def index
-    @rules = current_user.rules.page(params[:page]).per(15)
+    user_rules = current_user.rules
+    if params[:search_text].blank?
+      @rules = user_rules.page(params[:page]).per(15)
+    else
+      search_term = params[:search_text]
+      @rules = user_rules.where("signal LIKE '%#{search_term}%' or value_type LIKE '%#{search_term}%' 
+        or comparison_operator LIKE '%#{search_term}%' or value LIKE '%#{search_term}%'").page(params[:page]).per(15)
+    end
   end
 
   # GET /rules/new

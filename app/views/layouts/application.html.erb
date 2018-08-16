@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RuleEngine</title>
+    <title>| RuleEngine |</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= button_to 'Sign out'.html_safe, destroy_user_session_path, method: :delete, style: 'float: right' if signed_in? %>
-    <center><h1>Rule Engine</h1></center>
+    <center><h1><a href="/rules">Rule Engine</a></h1></center>
   </head>
   <body>
     <style>
@@ -42,10 +42,6 @@
         display: table-row;
       }
 
-      footer a {
-        text-decoration: none;
-      }
-
       footer p {
         padding: absolute;
         margin-left: 10px;
@@ -54,6 +50,23 @@
       .pagination {
         position: fixed;
         right: 20px;
+      }
+
+      .search-box {
+        width: 100px;
+        height: 100px;
+
+        position: absolute;
+        left: -20%;
+        right: 0;
+
+        margin: auto;
+      }
+
+      a:hover, a:visited, a:link, a:active {
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
       }
     </style>
 
